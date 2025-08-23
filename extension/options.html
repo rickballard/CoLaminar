@@ -1,0 +1,40 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>BrightFeed Options (MVP)</title>
+  <style>
+    body{ font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; padding:16px; max-width:720px }
+    .row{ margin: 8px 0 }
+    .card{ border:1px solid #ddd; border-radius:8px; padding:12px; margin-top:12px }
+    label{ display:flex; align-items:center; gap:8px }
+    code{ background:#f6f6f6; padding:2px 4px; border-radius:4px }
+    .muted{ color:#666 }
+    button{ padding:8px 12px; border-radius:6px; border:1px solid #ccc; background:#fafafa; cursor:pointer }
+    button.primary{ background:#f0f8ff; border-color:#95c7ff }
+    input[type="number"]{ width:80px }
+  </style>
+</head>
+<body>
+  <h1>BrightFeed — Options</h1>
+  <div class="row">
+    <label><input type="checkbox" id="hide_shorts"> Hide Shorts</label>
+    <label><input type="checkbox" id="hide_comments"> Hide comments</label>
+    <label><input type="checkbox" id="hide_home"> Hide home recommendations</label>
+  </div>
+  <div class="row">
+    <label>Minimum video length (minutes): <input type="number" id="min_minutes" min="0" step="1"></label>
+  </div>
+  <div class="row">
+    <button class="primary" id="save">Save Policy</button>
+    <button id="reset">Reset to defaults</button>
+  </div>
+  <div class="card">
+    <strong>Import policy JSON</strong>
+    <div class="muted">Matches <code>policy/policy.schema.json</code>.  Only a subset is used by the MVP.</div>
+    <input type="file" id="import_json" accept="application/json">
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>
