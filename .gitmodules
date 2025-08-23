@@ -1,0 +1,3 @@
+[submodule "external/CoCache"]
+	path = external/CoCache
+	url = https://github.com/rickballard/CoCache.git
