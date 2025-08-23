@@ -1,0 +1,33 @@
+{
+  "version": "1.1",
+  "mode": "Adult",
+  "minVideoMinutes": 6,
+  "hide": [
+    "shorts",
+    "comments",
+    "home_recommendations",
+    "autoplay"
+  ],
+  "banPatterns": [
+    "DESTROYS",
+    "OWNED",
+    "celebrity",
+    "drama"
+  ],
+  "biasTriage": "counterpoint-required",
+  "news": {
+    "priorityTopics": [
+      {
+        "query": "AI safety OR governance",
+        "boost": 1.8,
+        "decayHours": 24
+      }
+    ],
+    "sourceDiversity": true,
+    "requireCounterpoint": true
+  },
+  "youtubeWhitelistChannelIds": [
+    "UCX6b17PVsYBQ0ip5gyeme-Q",
+    "UC9-y-6csu5WGm29I7JiwpnA"
+  ]
+}

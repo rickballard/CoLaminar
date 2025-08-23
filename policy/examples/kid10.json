@@ -1,0 +1,21 @@
+{
+  "version": "1",
+  "mode": "Kid10",
+  "minVideoMinutes": 6,
+  "hide": [
+    "shorts",
+    "comments",
+    "home_recommendations",
+    "autoplay"
+  ],
+  "banPatterns": [
+    "DESTROYS",
+    "OWNED",
+    "celebrity",
+    "drama"
+  ],
+  "youtubeWhitelistChannelIds": [
+    "UCt_t6FwNsqr3WWoL6dT4mPw",
+    "UCoryWpk4QVYKFCJul9KBdyw"
+  ]
+}

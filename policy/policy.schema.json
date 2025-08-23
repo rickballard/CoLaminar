@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CoLaminar Policy",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "Adult",
+        "Kid10"
+      ]
+    },
+    "minVideoMinutes": {
+      "type": "number",
+      "minimum": 0
+    },
+    "hide": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "banPatterns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "biasTriage": {
+      "type": "string",
+      "enum": [
+        "off",
+        "multi-angle",
+        "counterpoint-required"
+      ]
+    },
+    "youtubeWhitelistChannelIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "news": {
+      "type": "object",
+      "properties": {
+        "priorityTopics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string"
+              },
+              "boost": {
+                "type": "number",
+                "minimum": 0
+              },
+              "decayHours": {
+                "type": "number",
+                "minimum": 1
+              },
+              "alwaysTop": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "query"
+            ]
+          }
+        },
+        "sourceDiversity": {
+          "type": "boolean"
+        },
+        "requireCounterpoint": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "required": [
+    "version",
+    "mode",
+    "minVideoMinutes",
+    "hide"
+  ]
+}

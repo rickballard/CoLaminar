@@ -1,0 +1,16 @@
+
+name: pack-extension
+on: [push]
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Zip extension if present
+        run: |
+          mkdir -p dist
+          if [ -d extension ]; then (cd extension && zip -r ../dist/colaminar-extension.zip .); fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: colaminar-extension
+          path: dist/**
