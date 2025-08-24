@@ -4,15 +4,15 @@ on:
   issues:
     types: [opened, transferred, reopened]
 
+permissions:
+  contents: read
+  issues: read
+
 jobs:
   add:
     runs-on: ubuntu-latest
     steps:
-      - uses: cli/gh-action@v2
       - name: Add to user project
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
-          OWNER: rickballard
-          PROJ_NUM: 3
-          ISSUE_URL: ${{ github.event.issue.html_url }}
-        run: gh project item-add "$PROJ_NUM" --owner "$OWNER" --url "$ISSUE_URL"
+        run: gh project item-add "3" --owner "rickballard" --url "${{ github.event.issue.html_url }}"
