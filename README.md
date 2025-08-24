@@ -8,3 +8,11 @@
 - Policy schema + examples: `/policy/`.
 
 > This repo contains plans and scaffolding for a compliant, open, donation‑supported product.  Financial model intentionally minimal.
+
+
+---
+
+### Quick links
+- **Live demo (GitHub Pages):** https://rickballard.github.io/CoLaminar/
+- **Extension (load unpacked):** \/extension\
+- **External repos:** [CoCache](https://github.com/rickballard/CoCache) · [CoCivium](https://github.com/rickballard/CoCivium) · [GIBindex](https://github.com/rickballard/GIBindex) · [CoModules](https://github.com/rickballard/CoModules)
