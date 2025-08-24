@@ -1,0 +1,18 @@
+name: Auto-add issues to Co Stack
+
+on:
+  issues:
+    types: [opened, transferred, reopened]
+
+jobs:
+  add:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: cli/gh-action@v2
+      - name: Add to user project
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          OWNER: rickballard
+          PROJ_NUM: 3
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+        run: gh project item-add "$PROJ_NUM" --owner "$OWNER" --url "$ISSUE_URL"
