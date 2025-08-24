@@ -1,0 +1,17 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>BrightFeed — Sample OPML</title>
+  </head>
+  <body>
+    <outline text="News">
+      <outline text="AP Top Stories" type="rss" xmlUrl="https://www.apnews.com/apf-topnews?format=atom"/>
+      <outline text="Reuters World" type="rss" xmlUrl="https://feeds.reuters.com/reuters/worldNews"/>
+    </outline>
+    <outline text="YouTube Channels">
+      <outline text="Veritasium" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UC9-y-6csu5WGm29I7JiwpnA"/>
+      <outline text="Khan Academy" type="rss" xmlUrl="https://www.youtube.com/feeds/videos.xml?channel_id=UCX6b17PVsYBQ0ip5gyeme-Q"/>
+    </outline>
+  </body>
+</opml>

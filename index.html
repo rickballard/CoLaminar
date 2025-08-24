@@ -1,0 +1,64 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>BrightFeed — Clean Feed (MVP)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; }
+    header { padding: 12px 16px; background: #0a2540; color: #fff; }
+    main { padding: 16px; }
+    .row { margin: 12px 0; }
+    .card { border:1px solid #ddd; border-radius:10px; padding:12px; margin:12px 0; }
+    input[type="file"]{ margin-top:6px }
+    ul{ padding-left: 18px }
+  </style>
+</head>
+<body>
+  <header><strong>BrightFeed</strong> — Clean Feed (MVP)</header>
+  <main>
+    <div class="row card">
+      <div><strong>Load Policy JSON</strong></div>
+      <input type="file" id="policyFile" accept="application/json">
+      <pre id="policyOut"></pre>
+    </div>
+    <div class="row card">
+      <div><strong>Load OPML (feeds)</strong></div>
+      <input type="file" id="opmlFile" accept=".opml, text/xml, application/xml">
+      <ul id="feeds"></ul>
+      <div class="row" style="color:#666">Note: In a production app, the server/service would fetch feeds and apply scoring based on your policy.  The MVP page simply parses OPML to demonstrate the flow.</div>
+    </div>
+  </main>
+  <script>
+    const policyOut = document.getElementById('policyOut');
+    document.getElementById('policyFile').addEventListener('change', async e => {
+      const f = e.target.files[0]; if(!f) return;
+      try{
+        const txt = await f.text();
+        const obj = JSON.parse(txt);
+        policyOut.textContent = JSON.stringify(obj, null, 2);
+      }catch(err){
+        policyOut.textContent = "Invalid JSON";
+      }
+    });
+
+    const feedsEl = document.getElementById('feeds');
+    document.getElementById('opmlFile').addEventListener('change', async e => {
+      feedsEl.innerHTML = "";
+      const f = e.target.files[0]; if(!f) return;
+      const txt = await f.text();
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(txt, "text/xml");
+      const outlines = Array.from(xml.querySelectorAll('outline[type="rss"], outline[xmlUrl]'));
+      outlines.forEach(o => {
+        const title = o.getAttribute('title') || o.getAttribute('text') || '(untitled)';
+        const url = o.getAttribute('xmlUrl') || '';
+        const li = document.createElement('li');
+        li.textContent = `${title} — ${url}`;
+        feedsEl.appendChild(li);
+      });
+    });
+  </script>
+</body>
+</html>
