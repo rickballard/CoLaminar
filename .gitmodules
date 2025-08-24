@@ -1,3 +1,12 @@
 [submodule "external/CoCache"]
 	path = external/CoCache
 	url = https://github.com/rickballard/CoCache.git
+[submodule "external/CoCivium"]
+	path = external/CoCivium
+	url = https://github.com/rickballard/CoCivium.git
+[submodule "external/GIBindex"]
+	path = external/GIBindex
+	url = https://github.com/rickballard/GIBindex.git
+[submodule "external/CoModules"]
+	path = external/CoModules
+	url = https://github.com/rickballard/CoModules.git
