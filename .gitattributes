@@ -5,3 +5,8 @@
 *.json text eol=lf
 *.xml text eol=lf
 *.svg text eol=lf
+* text=auto
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.sh  text eol=lf
+

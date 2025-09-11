@@ -1,3 +1,4 @@
+<!-- status: stub; target: 150+ words -->
 
 # Extension Tech Spec
 
@@ -6,3 +7,4 @@
 - Options page persists `brightfeedPolicy` to `chrome.storage.sync`.  
 - Popup: shows Focus/Growth; fetches Clean Feed from web app origin.  
 - CI: pack zip on each push; lint manifest and JS.
+

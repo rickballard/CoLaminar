@@ -1,3 +1,4 @@
+<!-- status: stub; target: 150+ words -->
 
 # Contributing
 
@@ -5,3 +6,4 @@
 - No stealth automation features or ToS‑dodging proposals.  
 - PRs must include a short rationale and test notes.  
 - Keep two spaces after periods in prose.  No trailing spaces in code.
+
