@@ -1,5 +1,6 @@
 <!-- status: stub; target: 150+ words -->
 <!-- status: stub; target: 150+ words -->
+<!-- status: stub; target: 150+ words -->
 
 ---
 name: Bug report
@@ -20,5 +21,6 @@ What you expected to happen.
 
 **Notes**
 Logs, screenshots, environment.
+
 
 
