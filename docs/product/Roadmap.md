@@ -1,4 +1,5 @@
 <!-- status: stub; target: 150+ words -->
+<!-- status: stub; target: 150+ words -->
 
 # Roadmap
 
@@ -23,4 +24,5 @@
 - Landing site + donation flow.
 
 **Done‑when:** Listed in browser stores; TestFlight build available.
+
 
