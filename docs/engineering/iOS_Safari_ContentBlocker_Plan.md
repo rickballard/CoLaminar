@@ -1,4 +1,6 @@
 <!-- status: stub; target: 150+ words -->
+<!-- status: stub; target: 150+ words -->
+<!-- status: stub; target: 150+ words -->
 
 # iOS Safari Content Blocker — Plan (draft)
 
@@ -6,4 +8,6 @@
 - Safari Web Extension for policy UI and "Clean Feed" pane.  
 - Family controls: deep‑link to Screen Time settings; provide guidance screens.  
 - TestFlight internal first; App Store family category later.
+
+
 
