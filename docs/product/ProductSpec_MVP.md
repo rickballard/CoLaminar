@@ -1,3 +1,4 @@
+<!-- status: stub; target: 150+ words -->
 
 # Product Spec — MVP
 
@@ -20,3 +21,4 @@
 - Clean Feed lists 20 items from OPML within 2s.  
 - Focus/Growth update live as I watch.  
 - OAuth flow for YouTube succeeds and can create a "Daily Learn" playlist with one tap.
+

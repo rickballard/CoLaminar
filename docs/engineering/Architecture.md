@@ -1,3 +1,4 @@
+<!-- status: stub; target: 150+ words -->
 
 # Architecture
 
@@ -19,3 +20,4 @@
 
 ## Guardrails
 - No password capture.  No scraping behind logins.  No stealth automation.  Kid data minimized.
+
