@@ -19,7 +19,6 @@
 - **Live demo (GitHub Pages):** https://rickballard.github.io/CoLaminar/
 - **Extension (load unpacked):** \/extension\
 - **External repos:** [CoCache](https://github.com/rickballard/CoCache) · [CoCivium](https://github.com/rickballard/CoCivium) · [GIBindex](https://github.com/rickballard/GIBindex) · [CoModules](https://github.com/rickballard/CoModules)
-
 <!-- BEGIN: STATUS -->
 ### Operational Status
 CoDrift Index: n/a% (n/a)
