@@ -1,24 +1,14 @@
-<!-- status: stub; target: 150+ words -->
-<!-- status: stub; target: 150+ words -->
-<!-- status: stub; target: 150+ words -->
+# CoLaminar — Advice-Bomb (CoEvolution + Installers)
 
-# CoLaminar
+**What:** A portable bundle that drops a `/coevolution/` page into any CoSuite repo, upgrades plane UX
+(auto-scale + mobile-friendly slider), and injects an explainer + glossary.
 
-**Learning‑first feed companion.**  Filters algorithmic junk (Shorts/autoplay/clickbait), curates from sources you choose (RSS + YouTube channel feeds), and measures Focus & Growth.  Kid Mode: whitelisted channels only, ≥6‑minute videos, parental locks guided.  Privacy‑first.  Ad‑free.  Open policy JSON.
+**Get the zip:** see the latest release → [advice-bomb-v1](https://github.com/rickballard/CoLaminar/releases/tag/advice-bomb-v1)
 
-- Start in `/docs/business/BusinessPlan.md` and `/docs/product/Roadmap.md`.
-- Implementation details: `/docs/engineering/Architecture.md`.
-- Policy schema + examples: `/policy/`.
-
-> This repo contains plans and scaffolding for a compliant, open, donation‑supported product.  Financial model intentionally minimal.
-
-
----
-
-### Quick links
-- **Live demo (GitHub Pages):** https://rickballard.github.io/CoLaminar/
-- **Extension (load unpacked):** \/extension\
-- **External repos:** [CoCache](https://github.com/rickballard/CoCache) · [CoCivium](https://github.com/rickballard/CoCivium) · [GIBindex](https://github.com/rickballard/GIBindex) · [CoModules](https://github.com/rickballard/CoModules)
-
-
-
+## Quick start (from target repo root)
+```powershell
+$zip = Join-Path $HOME 'Downloads\CoLaminar-advice-bomb.zip'   # put the release asset here
+$temp = Join-Path $env:TEMP ("coab-" + [Guid]::NewGuid()); New-Item -ItemType Directory -Force $temp | Out-Null
+Expand-Archive -Path $zip -DestinationPath $temp -Force
+pwsh -File (Join-Path $temp 'Run-AdviceBomb.ps1') -RepoRoot .
+git add .; git commit -m "Apply CoLaminar advice-bomb"; git push
