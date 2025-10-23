@@ -1,11 +1,13 @@
 param([string]$RepoRoot=".")
 $ErrorActionPreference="Stop"
 
-$targets = @(
-  Join-Path $RepoRoot 'plane-app\index.html',
-  Join-Path $RepoRoot 'plane-app\preview\index.html'
-) | Where-Object { Test-Path $_ }
-
+# Build candidate files safely (map rel → full path one-by-one)
+$rel = @("plane-app\index.html","plane-app\preview\index.html")
+$targets = @()
+foreach($r in $rel){
+  $p = Join-Path $RepoRoot $r
+  if (Test-Path $p) { $targets += $p }
+}
 if (-not $targets){ Write-Host "ℹ️ No plane pages found."; exit 0 }
 
 $intro = @"
@@ -37,17 +39,38 @@ $glossary = @"
 
 foreach($f in $targets){
   $html = Get-Content $f -Raw
-  $html = [regex]::Replace($html,'(?is)<details[^>]*>\s*<summary[^>]*>.*?What am I looking at\?.*?</summary>.*?</details>',$intro,[System.Text.RegularExpressions.RegexOptions]::Singleline)
+
+  # Replace old explainer if present
+  $html = [regex]::Replace(
+    $html,
+    '(?is)<details[^>]*>\s*<summary[^>]*>.*?What am I looking at\?.*?</summary>.*?</details>',
+    $intro,
+    [System.Text.RegularExpressions.RegexOptions]::Singleline
+  )
+
+  # If no explainer, inject after </header>
   if ($html -notmatch 'id="plane-what"'){
-    $html = [regex]::Replace($html,'(?is)(</header>)',"`$1`r`n$intro",[System.Text.RegularExpressions.RegexOptions]::Singleline)
+    $html = [regex]::Replace(
+      $html,'(?is)(</header>)',"`$1`r`n$intro",
+      [System.Text.RegularExpressions.RegexOptions]::Singleline
+    )
   }
+
+  # Glossary before Methods; else before </body>
   if ($html -notmatch 'id="plane-glossary"'){
     if ($html -match 'id="plane-methods"'){
-      $html = [regex]::Replace($html,'(?is)(<section[^>]+id="plane-methods")',"$glossary`r`n`$1",[System.Text.RegularExpressions.RegexOptions]::Singleline)
+      $html = [regex]::Replace(
+        $html,'(?is)(<section[^>]+id="plane-methods")',"$glossary`r`n`$1",
+        [System.Text.RegularExpressions.RegexOptions]::Singleline
+      )
     } else {
-      $html = [regex]::Replace($html,'(?is)(</body>)',"$glossary`r`n`$1",[System.Text.RegularExpressions.RegexOptions]::Singleline)
+      $html = [regex]::Replace(
+        $html,'(?is)(</body>)',"$glossary`r`n`$1",
+        [System.Text.RegularExpressions.RegexOptions]::Singleline
+      )
     }
   }
+
   Set-Content -Encoding utf8 -NoNewline $f -Value $html
 }
 Write-Host "✅ Plane pages: explainer + glossary injected"
