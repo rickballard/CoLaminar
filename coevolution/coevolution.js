@@ -4,7 +4,7 @@
   const nowIso=()=>new Date().toISOString(), fmtPri=p=>p===1?"P1":p===2?"P2":"P3";
   const load=()=>{ try{return JSON.parse(localStorage.getItem(KEY)||"{}")}catch{return{}} };
   const save=o=>{ try{localStorage.setItem(KEY,JSON.stringify(o))}catch{} };
-  const tryFetch=async url=>{ try{const r=await fetch(url,{cache:"no-store"}); if(!r.ok) return null; return {url:text=await r.text(), text};}catch{return null;} };
+  const tryFetch=async url=>{ try{const r=await fetch(url,{cache:"no-store"}); if(!r.ok) return null; return { url, text: await r.text() };}catch{return null;} };
   const yyyymmdd=d=>`${d.getFullYear()}${String(d.getMonth()+1).padStart(2,"0")}${String(d.getDate()).padStart(2,"0")}`;
   async function fetchRecent(){ const out=[]; for(let i=0;i<DAYS;i++){ const d=new Date(Date.now()-i*864e5); const hit=await tryFetch(LOG_BASE+yyyymmdd(d)+".jsonl"); if(hit) out.push(hit);} return out; }
   const parseJsonl=t=>t.split(/\r?\n/).filter(Boolean).flatMap(l=>{try{return[JSON.parse(l)]}catch{return[]}});
